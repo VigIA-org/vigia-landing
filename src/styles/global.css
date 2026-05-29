@@ -3,20 +3,20 @@
 @source "../**/*.ts";
 /* ───────────────────── Design Tokens ───────────────────── */
 @theme {
-  --color-carbon: #121212;
-  --color-carbon-light: #1a1a1a;
-  --color-carbon-lighter: #242424;
-  --color-carbon-surface: #2a2a2a;
+  --color-carbon: #0e0e10;
+  --color-carbon-light: #161618;
+  --color-carbon-lighter: #1e1e22;
+  --color-carbon-surface: #26262b;
   --color-cobalt: #0055FF;
   --color-cobalt-glow: #3380FF;
   --color-cobalt-dim: #003BB5;
   --color-emerald: #00FF88;
   --color-emerald-glow: #33FFa0;
   --color-emerald-dim: #00CC6A;
-  --color-slate: #8899AA;
-  --color-ghost: #6B7D8E;
+  --color-slate: #7a8a9a;
+  --color-ghost: #5a6a7a;
   --color-white-pure: #FFFFFF;
-  --color-white-soft: #E0E6ED;
+  --color-white-soft: #d8dee6;
 
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, 'Cascadia Code', monospace;
@@ -44,6 +44,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
   cursor: none;
+  line-height: 1.7;
 }
 
 ::selection {
@@ -55,8 +56,8 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-mono);
   font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
+  letter-spacing: -0.03em;
+  line-height: 1.08;
 }
 
 .text-gradient-cobalt {
@@ -87,24 +88,20 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 6rem 2rem;
+  padding: 10rem 2rem;
   overflow: hidden;
   scroll-margin-top: 80px;
 }
 
 .section-inner {
-  max-width: 1200px;
+  max-width: 1080px;
   width: 100%;
   margin: 0 auto;
 }
 
 /* ───────────────────── HUD Elements ───────────────────── */
-/* Fallbacks for Tailwind cache issues */
-.mb-16 { margin-bottom: 4rem !important; }
-.mb-24 { margin-bottom: 6rem !important; }
-
 .hud-border {
-  border: 1px solid rgba(0, 85, 255, 0.15);
+  border: 1px solid rgba(0, 85, 255, 0.12);
   position: relative;
 }
 
@@ -112,45 +109,24 @@ h1, h2, h3, h4, h5, h6 {
 .hud-border::after {
   content: '';
   position: absolute;
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   border-color: var(--color-cobalt);
+  opacity: 0.6;
 }
 
 .hud-border::before {
   top: -1px;
   left: -1px;
-  border-top: 2px solid;
-  border-left: 2px solid;
+  border-top: 1.5px solid;
+  border-left: 1.5px solid;
 }
 
 .hud-border::after {
   bottom: -1px;
   right: -1px;
-  border-bottom: 2px solid;
-  border-right: 2px solid;
-}
-
-.hud-corner-tr::before {
-  content: '';
-  position: absolute;
-  top: -1px;
-  right: -1px;
-  width: 12px;
-  height: 12px;
-  border-top: 2px solid var(--color-cobalt);
-  border-right: 2px solid var(--color-cobalt);
-}
-
-.hud-corner-bl::after {
-  content: '';
-  position: absolute;
-  bottom: -1px;
-  left: -1px;
-  width: 12px;
-  height: 12px;
-  border-bottom: 2px solid var(--color-cobalt);
-  border-left: 2px solid var(--color-cobalt);
+  border-bottom: 1.5px solid;
+  border-right: 1.5px solid;
 }
 
 /* ───────────────────── Scanline Effect ───────────────────── */
@@ -199,17 +175,17 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ───────────────────── Cards ───────────────────── */
 .glass-card {
-  background: rgba(26, 26, 26, 0.6);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(0, 85, 255, 0.12);
-  border-radius: 8px;
-  padding: 2rem;
-  transition: border-color 0.3s ease;
+  background: rgba(22, 22, 24, 0.5);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 85, 255, 0.08);
+  border-radius: 12px;
+  padding: 2.25rem;
+  transition: border-color 0.4s ease;
 }
 
 .glass-card:hover {
-  border-color: rgba(0, 85, 255, 0.35);
+  border-color: rgba(0, 85, 255, 0.25);
 }
 
 /* ───────────────────── Language Toggle ───────────────────── */
@@ -221,7 +197,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  border: 1px solid rgba(0, 85, 255, 0.25);
+  border: 1px solid rgba(0, 85, 255, 0.2);
   border-radius: 4px;
   overflow: hidden;
   position: relative;
@@ -314,7 +290,7 @@ button:focus-visible {
   top: 0;
   left: 0;
   width: 100%;
-  height: 3px;
+  height: 2px;
   background: linear-gradient(90deg, var(--color-cobalt), var(--color-emerald));
   transform-origin: left;
   transform: scaleX(0);
@@ -331,6 +307,8 @@ button:focus-visible {
     display: none;
   }
   .section-panel {
-    padding: 4rem 1.25rem;
+    padding: 6rem 1.5rem;
+    min-height: auto;
+    min-height: 100dvh;
   }
 }

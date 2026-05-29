@@ -37,7 +37,7 @@ export const translations = {
     engine: {
       label: '// VIGIA ENGINE',
       title: 'VigIA no solo vigila — disuade.',
-      sub: 'VigIA no solo vigila — disuade. Nuestro sistema analiza el video de su cámara en tiempo real. Cuando detecta una amenaza humana real, activa bocinas, sirenas y reflectores automáticamente. Una voz de autoridad — generada por inteligencia artificial — advierte al intruso con firmeza: "Si continúa, se tomarán medidas inmediatas." Sin falsos positivos. Sin intervención manual. Sin perder tiempo.',
+      sub: 'VigIA analiza tus cámaras en tiempo real. Al detectar una amenaza humana real, activa sirenas, reflectores y una voz de autoridad generada por IA que advierte al intruso de forma inmediata. Sin falsos positivos. Sin intervención manual. Sin perder tiempo.',
       feat1_title: 'Detección Multi-clase',
       feat1_desc: 'Personas, vehículos, armas y objetos sospechosos identificados simultáneamente con bounding boxes de alta precisión.',
       feat2_title: 'Inferencia en Edge',
@@ -120,7 +120,7 @@ export const translations = {
     engine: {
       label: '// VIGIA ENGINE',
       title: 'The brain behind the vision.',
-      sub: 'Detection engine based on YOLOv8 optimized for real-time inference on accessible hardware.',
+      sub: 'VigIA analyzes your cameras in real time. When it detects a real human threat, it activates sirens, floodlights, and an AI-generated authority voice that warns the intruder immediately. No false positives. No manual intervention. No time wasted.',
       feat1_title: 'Multi-class Detection',
       feat1_desc: 'People, vehicles, weapons, and suspicious objects identified simultaneously with high-precision bounding boxes.',
       feat2_title: 'Edge Inference',

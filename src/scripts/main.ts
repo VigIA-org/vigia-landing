@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initSmoothScroll();
   initScrollProgress();
   initCinematicAnimations();
+  window.addEventListener("load", () => ScrollTrigger.refresh());
 });
 
 // ═══════════════════════════════════════════════
@@ -138,7 +139,7 @@ function heroEntrance() {
 
   // Subtitle — fade up
   tl.from(
-    "#hero .text-lg",
+    "#hero-sub",
     { autoAlpha: 0, y: 30, duration: 0.5, ease: "power2.out" },
     "-=0.2"
   );
@@ -177,16 +178,16 @@ function navbarCinematic() {
     start: "bottom top",
     onEnter: () => {
       gsap.to(navbar, {
-        backgroundColor: "rgba(18,18,18,0.97)",
-        borderBottomColor: "rgba(0,85,255,0.25)",
+        backgroundColor: "rgba(14,14,16,0.97)",
+        borderBottomColor: "rgba(0,85,255,0.2)",
         duration: 0.4,
         ease: "power2.out",
       });
     },
     onLeaveBack: () => {
       gsap.to(navbar, {
-        backgroundColor: "rgba(18,18,18,0.85)",
-        borderBottomColor: "rgba(0,85,255,0.1)",
+        backgroundColor: "rgba(14,14,16,0.8)",
+        borderBottomColor: "rgba(0,85,255,0.06)",
         duration: 0.4,
         ease: "power2.out",
       });
@@ -205,7 +206,7 @@ function navbarCinematic() {
           document.querySelectorAll(".nav-link").forEach((link) => {
             const isMatch = link.getAttribute("href") === id;
             gsap.to(link, {
-              color: isMatch ? "#0055FF" : "#8899AA",
+              color: isMatch ? "#0055FF" : "#5a6a7a",
               duration: 0.3,
             });
           });
@@ -222,22 +223,16 @@ function sectionReveals(isDesktop: boolean) {
   const sections = gsap.utils.toArray<HTMLElement>(".section-panel:not(#hero)");
 
   sections.forEach((section) => {
-    const inner = section.querySelector(".section-inner");
-    if (!inner) return;
-
     // Section label (the "// SECTION" mono text)
-    const label = section.querySelector(".font-mono.text-sm.text-cobalt, .font-mono.text-sm.text-emerald");
+    const label = section.querySelector(".font-mono.text-cobalt, .font-mono.text-emerald");
     // Section heading
     const heading = section.querySelector("h2");
-    // All cards inside
-    const cards = section.querySelectorAll(".glass-card");
 
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: section,
         start: isDesktop ? "top 80%" : "top 85%",
-        end: "top 30%",
-        scrub: isDesktop ? 1 : false,
+        toggleActions: "play none none reverse",
       },
     });
 
@@ -279,23 +274,6 @@ function sectionReveals(isDesktop: boolean) {
           "-=0.3"
         );
       }
-
-      // Cards — staggered rise with perspective
-      if (cards.length) {
-        tl.from(
-          cards,
-          {
-            autoAlpha: 0,
-            y: 60,
-            rotationX: 8,
-            transformOrigin: "center bottom",
-            stagger: 0.1,
-            duration: 0.6,
-            ease: "power2.out",
-          },
-          "-=0.3"
-        );
-      }
     } else {
       // Mobile — clean fade up
       tl.from(section, {
@@ -306,10 +284,6 @@ function sectionReveals(isDesktop: boolean) {
 
       if (heading) {
         tl.from(heading, { autoAlpha: 0, y: 30, duration: 0.5 }, "-=0.4");
-      }
-
-      if (cards.length) {
-        tl.from(cards, { autoAlpha: 0, y: 40, stagger: 0.08, duration: 0.5 }, "-=0.2");
       }
     }
   });
