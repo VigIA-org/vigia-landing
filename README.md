@@ -33,7 +33,7 @@ VigIA shifts the paradigm from **reactive recording** to **proactive interventio
 ```
 ┌─────────────┐    ┌──────────────────┐    ┌─────────────┐    ┌─────────────┐
 │  Detection  │ →  │  Classification  │ →  │    Alert    │ →  │   Record    │
-│   (YOLO)    │    │   (Multi-class)  │    │ (Mobile App)│    │  (SQLite)   │
+│   (YOLO)    │    │   (Multi-class)  │    │  (Telegram) │    │  (SQLite)   │
 └─────────────┘    └──────────────────┘    └─────────────┘    └─────────────┘
 ```
 
