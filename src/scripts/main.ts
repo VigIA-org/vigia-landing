@@ -195,7 +195,7 @@ function navbarCinematic() {
   });
 
   // Active section highlight
-  const sections = ["#engine", "#integration", "#specs", "#contact"];
+  const sections = ["#engine", "#integration", "#contact"];
   sections.forEach((id) => {
     ScrollTrigger.create({
       trigger: id,
@@ -346,22 +346,6 @@ function sectionReveals(isDesktop: boolean) {
         stagger: 0.2,
         duration: 0.8,
         ease: "power3.out",
-      });
-    },
-    start: "top 85%",
-    once: true,
-  });
-
-  // Spec cards — grid reveal
-  ScrollTrigger.batch(".spec-card", {
-    onEnter: (elements) => {
-      gsap.from(elements, {
-        autoAlpha: 0,
-        y: 40,
-        scale: 0.92,
-        stagger: 0.06,
-        duration: 0.5,
-        ease: "power2.out",
       });
     },
     start: "top 85%",

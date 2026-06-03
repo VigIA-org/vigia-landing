@@ -6,11 +6,7 @@ const es = translations.es;
 const en = translations.en;
 ---
 
-<Layout
-  title={es.seo.title}
-  description={es.seo.description}
-  lang="es"
->
+<Layout title={es.seo.title} description={es.seo.description} lang="es">
   <!-- ═══════ NAVBAR ═══════ -->
   <nav
     id="navbar"
@@ -18,10 +14,19 @@ const en = translations.en;
     class="fixed top-0 left-0 w-full z-[9000] transition-all duration-300"
     style="background:rgba(14,14,16,0.8);backdrop-filter:blur(16px);border-bottom:1px solid rgba(0,85,255,0.06);"
   >
-    <div class="flex items-center justify-between max-w-6xl mx-auto px-8 py-5">
+    <div class="flex items-center justify-between max-w-6xl mx-auto px-8 py-3">
       <!-- Logo -->
-      <a href="#hero" class="flex items-center gap-3 no-underline" aria-label="VigIA — Ir al inicio">
-        <svg width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true"
+      <a
+        href="#hero"
+        class="flex items-center gap-3 no-underline"
+        aria-label="VigIA — Ir al inicio"
+      >
+        <svg
+          width="26"
+          height="26"
+          viewBox="0 0 32 32"
+          fill="none"
+          aria-hidden="true"
           ><circle
             cx="16"
             cy="16"
@@ -80,13 +85,6 @@ const en = translations.en;
           data-i18n-en={en.nav.integration}>{es.nav.integration}</a
         >
         <a
-          href="#specs"
-          class="nav-link text-ghost hover:text-cobalt transition-colors py-2 px-1"
-          role="listitem"
-          data-i18n-es={es.nav.specs}
-          data-i18n-en={en.nav.specs}>{es.nav.specs}</a
-        >
-        <a
           href="#contact"
           class="nav-link text-ghost hover:text-cobalt transition-colors py-2 px-1"
           role="listitem"
@@ -97,9 +95,24 @@ const en = translations.en;
 
       <div class="flex items-center gap-5">
         <!-- Language Toggle -->
-        <div class="lang-toggle" id="lang-toggle" role="group" aria-label="Seleccionar idioma">
-          <button class="lang-btn active" data-lang="es" id="btn-es" aria-pressed="true">ES</button>
-          <button class="lang-btn" data-lang="en" id="btn-en" aria-pressed="false">EN</button>
+        <div
+          class="lang-toggle"
+          id="lang-toggle"
+          role="group"
+          aria-label="Seleccionar idioma"
+        >
+          <button
+            class="lang-btn active"
+            data-lang="es"
+            id="btn-es"
+            aria-pressed="true">ES</button
+          >
+          <button
+            class="lang-btn"
+            data-lang="en"
+            id="btn-en"
+            aria-pressed="false">EN</button
+          >
         </div>
         <!-- Mobile menu button -->
         <button
@@ -109,9 +122,15 @@ const en = translations.en;
           aria-expanded="false"
           aria-controls="mobile-menu"
         >
-          <span class="block w-5 h-0.5 bg-white transition-all" aria-hidden="true"></span>
-          <span class="block w-5 h-0.5 bg-white transition-all" aria-hidden="true"></span>
-          <span class="block w-3 h-0.5 bg-cobalt transition-all" aria-hidden="true"></span>
+          <span
+            class="block w-5 h-0.5 bg-white transition-all"
+            aria-hidden="true"></span>
+          <span
+            class="block w-5 h-0.5 bg-white transition-all"
+            aria-hidden="true"></span>
+          <span
+            class="block w-3 h-0.5 bg-cobalt transition-all"
+            aria-hidden="true"></span>
         </button>
       </div>
     </div>
@@ -136,13 +155,6 @@ const en = translations.en;
         data-i18n-en={en.nav.integration}>{es.nav.integration}</a
       >
       <a
-        href="#specs"
-        class="text-ghost hover:text-cobalt nav-link py-3"
-        role="menuitem"
-        data-i18n-es={es.nav.specs}
-        data-i18n-en={en.nav.specs}>{es.nav.specs}</a
-      >
-      <a
         href="#contact"
         class="text-ghost hover:text-cobalt nav-link py-3"
         role="menuitem"
@@ -153,588 +165,584 @@ const en = translations.en;
   </nav>
 
   <main id="main-content" tabindex="-1">
-
-  <!-- ═══════ HERO ═══════ -->
-  <section
-    id="hero"
-    class="section-panel relative overflow-hidden"
-    style="min-height:100vh;"
-  >
-    <!-- Animated background canvas -->
-    <canvas
-      id="hero-canvas"
-      class="absolute inset-0 w-full h-full"
-      style="z-index:0;"></canvas>
-    <!-- Gradient overlay -->
+    <!-- ═══════ HERO ═══════ -->
+    <section
+      id="hero"
+      class="section-panel relative overflow-hidden"
+      style="min-height:100vh;"
+    >
+    <!-- Video background -->
+    <video
+      id="hero-video"
+      class="absolute inset-0 w-full h-full object-cover"
+      style="z-index:0;"
+      autoplay
+      loop
+      muted
+      playsinline
+      preload="auto"
+      aria-hidden="true"
+    >
+      <source src="/hero_animation.webm" type="video/webm" />
+    </video>
+    <!-- Dark overlay for text readability -->
     <div
       class="absolute inset-0"
-      style="background:radial-gradient(ellipse at 30% 50%, rgba(0,85,255,0.06) 0%, transparent 60%);z-index:1;"
+      style="background:rgba(14,14,16,0.45);z-index:1;"
     >
     </div>
 
-    <div
-      class="section-inner relative z-10 flex flex-col items-start justify-center gap-10"
-    >
-      <!-- Status badge -->
       <div
-        class="flex items-center gap-3 px-4 py-2 rounded-full"
-        style="border:1px solid rgba(0,255,136,0.15);background:rgba(0,255,136,0.03);"
+        class="section-inner relative z-10 flex flex-col items-start justify-center gap-10"
       >
-        <span class="pulse-dot"></span>
-        <span
-          class="font-mono text-xs text-emerald tracking-widest i18n"
-          data-i18n-es={es.hero.status}
-          data-i18n-en={en.hero.status}>{es.hero.status}</span
+        <!-- Status badge -->
+        <div
+          class="flex items-center gap-3 px-4 py-2 rounded-full"
+          style="border:1px solid rgba(0,255,136,0.15);background:rgba(0,255,136,0.03);"
         >
-      </div>
-
-      <!-- Tagline -->
-      <p
-        class="font-mono text-xs text-cobalt tracking-[0.35em] uppercase i18n"
-        data-i18n-es={es.hero.tagline}
-        data-i18n-en={en.hero.tagline}
-      >
-        {es.hero.tagline}
-      </p>
-
-      <!-- Main headline -->
-      <h1 class="text-5xl md:text-7xl lg:text-[5.5rem] font-bold leading-[1.05]">
-        <span
-          class="block text-white-soft i18n"
-          id="hero-line-1"
-          data-i18n-es={es.hero.headline_1}
-          data-i18n-en={en.hero.headline_1}>{es.hero.headline_1}</span
-        >
-        <span
-          class="block text-gradient-cobalt i18n"
-          id="hero-line-2"
-          data-i18n-es={es.hero.headline_2}
-          data-i18n-en={en.hero.headline_2}>{es.hero.headline_2}</span
-        >
-        <span
-          class="block text-white-soft i18n"
-          id="hero-line-3"
-          data-i18n-es={es.hero.headline_3}
-          data-i18n-en={en.hero.headline_3}>{es.hero.headline_3}</span
-        >
-        <span
-          class="block text-gradient-emerald i18n"
-          id="hero-line-4"
-          data-i18n-es={es.hero.headline_4}
-          data-i18n-en={en.hero.headline_4}>{es.hero.headline_4}</span
-        >
-      </h1>
-
-      <!-- Subtitle -->
-      <p
-        id="hero-sub"
-        class="text-base md:text-lg text-slate max-w-xl leading-relaxed i18n"
-        data-i18n-es={es.hero.sub}
-        data-i18n-en={en.hero.sub}
-      >
-        {es.hero.sub}
-      </p>
-
-      <!-- CTA -->
-      <a
-        href="#engine"
-        id="hero-cta"
-        class="inline-flex items-center gap-3 px-8 py-4 font-mono text-sm font-semibold tracking-wider uppercase rounded text-white no-underline"
-        style="background:var(--color-cobalt);box-shadow:0 0 30px rgba(0,85,255,0.25);"
-      >
-        <span class="i18n" data-i18n-es={es.hero.cta} data-i18n-en={en.hero.cta}
-          >{es.hero.cta}</span
-        >
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"
-          ><path
-            d="M3 8h10M9 4l4 4-4 4"
-            stroke="currentColor"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"></path></svg
-        >
-      </a>
-
-      <!-- HUD corner decorations -->
-      <div
-        class="absolute top-24 right-8 hidden lg:block font-mono text-[10px] text-ghost opacity-40"
-        aria-hidden="true"
-      >
-        <div>LAT: 4.7110° N</div>
-        <div>LON: 74.0721° W</div>
-        <div class="mt-1 text-emerald">FPS: 30 ▪ RES: 640px</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════ PROBLEM ═══════ -->
-  <section id="problem" class="section-panel gpu-layer">
-    <div class="section-inner">
-      <p
-        class="font-mono text-xs text-cobalt tracking-[0.3em] mb-8 i18n"
-        data-i18n-es={es.problem.label}
-        data-i18n-en={en.problem.label}
-      >
-        {es.problem.label}
-      </p>
-      <h2
-        class="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-20 max-w-4xl leading-tight i18n"
-        data-i18n-es={es.problem.title}
-        data-i18n-en={en.problem.title}
-      >
-        {es.problem.title}
-      </h2>
-      <div class="grid md:grid-cols-2 gap-20 mb-28">
-        <p
-          class="text-base text-slate leading-[1.8] i18n"
-          data-i18n-es={es.problem.p1}
-          data-i18n-en={en.problem.p1}
-        >
-          {es.problem.p1}
-        </p>
-        <p
-          class="text-base text-slate leading-[1.8] i18n"
-          data-i18n-es={es.problem.p2}
-          data-i18n-en={en.problem.p2}
-        >
-          {es.problem.p2}
-        </p>
-      </div>
-      <!-- Stats -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="glass-card hud-border text-center p-10 stat-card">
-          <div
-            class="text-4xl md:text-5xl font-bold text-gradient-cobalt font-mono"
+          <span class="pulse-dot"></span>
+          <span
+            class="font-mono text-xs text-emerald tracking-widest i18n"
+            data-i18n-es={es.hero.status}
+            data-i18n-en={en.hero.status}>{es.hero.status}</span
           >
-            {es.problem.stat1_num}
-          </div>
-          <p
-            class="text-xs text-ghost mt-4 font-mono tracking-wider i18n"
-            data-i18n-es={es.problem.stat1_label}
-            data-i18n-en={en.problem.stat1_label}
-          >
-            {es.problem.stat1_label}
-          </p>
         </div>
-        <div class="glass-card hud-border text-center p-10 stat-card">
-          <div
-            class="text-4xl md:text-5xl font-bold text-gradient-emerald font-mono"
+
+        <!-- Tagline -->
+        <p
+          class="font-mono text-xs text-cobalt tracking-[0.35em] uppercase i18n"
+          data-i18n-es={es.hero.tagline}
+          data-i18n-en={en.hero.tagline}
+        >
+          {es.hero.tagline}
+        </p>
+
+        <!-- Main headline -->
+        <h1
+          class="text-5xl md:text-7xl lg:text-[5.5rem] font-bold leading-[1.05]"
+        >
+          <span
+            class="block text-white-soft i18n"
+            id="hero-line-1"
+            data-i18n-es={es.hero.headline_1}
+            data-i18n-en={en.hero.headline_1}>{es.hero.headline_1}</span
           >
-            {es.problem.stat2_num}
-          </div>
-          <p
-            class="text-xs text-ghost mt-4 font-mono tracking-wider i18n"
-            data-i18n-es={es.problem.stat2_label}
-            data-i18n-en={en.problem.stat2_label}
+          <span
+            class="block text-gradient-cobalt i18n"
+            id="hero-line-2"
+            data-i18n-es={es.hero.headline_2}
+            data-i18n-en={en.hero.headline_2}>{es.hero.headline_2}</span
           >
-            {es.problem.stat2_label}
-          </p>
-        </div>
-        <div class="glass-card hud-border text-center p-10 stat-card">
-          <div
-            class="text-4xl md:text-5xl font-bold text-gradient-cobalt font-mono"
+          <span
+            class="block text-white-soft i18n"
+            id="hero-line-3"
+            data-i18n-es={es.hero.headline_3}
+            data-i18n-en={en.hero.headline_3}>{es.hero.headline_3}</span
           >
-            {es.problem.stat3_num}
-          </div>
-          <p
-            class="text-xs text-ghost mt-4 font-mono tracking-wider i18n"
-            data-i18n-es={es.problem.stat3_label}
-            data-i18n-en={en.problem.stat3_label}
+          <span
+            class="block text-gradient-emerald i18n"
+            id="hero-line-4"
+            data-i18n-es={es.hero.headline_4}
+            data-i18n-en={en.hero.headline_4}>{es.hero.headline_4}</span
           >
-            {es.problem.stat3_label}
-          </p>
+        </h1>
+
+        <!-- Subtitle -->
+        <p
+          id="hero-sub"
+          class="text-base md:text-lg text-slate max-w-xl leading-relaxed i18n"
+          data-i18n-es={es.hero.sub}
+          data-i18n-en={en.hero.sub}
+        >
+          {es.hero.sub}
+        </p>
+
+        <!-- CTA -->
+        <a
+          href="#contact"
+          id="hero-cta"
+          class="inline-flex items-center gap-3 px-8 py-4 font-mono text-sm font-semibold tracking-wider uppercase rounded text-white no-underline"
+          style="background:var(--color-cobalt);box-shadow:0 0 30px rgba(0,85,255,0.25);"
+        >
+          <span
+            class="i18n"
+            data-i18n-es={es.hero.cta}
+            data-i18n-en={en.hero.cta}>{es.hero.cta}</span
+          >
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+            aria-hidden="true"
+            ><path
+              d="M3 8h10M9 4l4 4-4 4"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path></svg
+          >
+        </a>
+
+        <!-- HUD corner decorations -->
+        <div
+          class="absolute top-24 right-8 hidden lg:block font-mono text-[10px] text-ghost opacity-40"
+          aria-hidden="true"
+        >
+          <div>LAT: 4.7110° N</div>
+          <div>LON: 74.0721° W</div>
+          <div class="mt-1 text-emerald">FPS: 30 ▪ RES: 640px</div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ═══════ ENGINE ═══════ -->
-  <section id="engine" class="section-panel gpu-layer">
-    <div class="section-inner">
-      <div class="flex items-center gap-3 mb-8">
+    <!-- ═══════ PROBLEM ═══════ -->
+    <section id="problem" class="section-panel gpu-layer">
+      <div class="section-inner">
         <p
-          class="font-mono text-xs text-emerald tracking-[0.3em] i18n"
-          data-i18n-es={es.engine.label}
-          data-i18n-en={en.engine.label}
+          class="font-mono text-xs text-cobalt tracking-[0.3em] mb-8 i18n"
+          data-i18n-es={es.problem.label}
+          data-i18n-en={en.problem.label}
         >
-          {es.engine.label}
+          {es.problem.label}
         </p>
-        <span class="pulse-dot"></span>
-        <span
-          class="font-mono text-[10px] text-emerald i18n"
-          data-i18n-es={es.engine.pulse}
-          data-i18n-en={en.engine.pulse}>{es.engine.pulse}</span
+        <h2
+          class="text-3xl md:text-5xl lg:text-6xl font-bold text-white max-w-4xl leading-tight i18n"
+          data-i18n-es={es.problem.title}
+          data-i18n-en={en.problem.title}
         >
+          {es.problem.title}
+        </h2>
+        <div class="grid md:grid-cols-2 gap-20 mb-28">
+          <p
+            class="text-base text-slate leading-[1.8] i18n"
+            data-i18n-es={es.problem.p1}
+            data-i18n-en={en.problem.p1}
+          >
+            {es.problem.p1}
+          </p>
+          <p
+            class="text-base text-slate leading-[1.8] i18n"
+            data-i18n-es={es.problem.p2}
+            data-i18n-en={en.problem.p2}
+          >
+            {es.problem.p2}
+          </p>
+        </div>
+        <!-- Stats -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="glass-card hud-border text-center p-10 stat-card">
+            <div
+              class="text-4xl md:text-5xl font-bold text-gradient-cobalt font-mono"
+            >
+              {es.problem.stat1_num}
+            </div>
+            <p
+              class="text-xs text-ghost mt-4 font-mono tracking-wider i18n"
+              data-i18n-es={es.problem.stat1_label}
+              data-i18n-en={en.problem.stat1_label}
+            >
+              {es.problem.stat1_label}
+            </p>
+          </div>
+          <div class="glass-card hud-border text-center p-10 stat-card">
+            <div
+              class="text-4xl md:text-5xl font-bold text-gradient-emerald font-mono"
+            >
+              {es.problem.stat2_num}
+            </div>
+            <p
+              class="text-xs text-ghost mt-4 font-mono tracking-wider i18n"
+              data-i18n-es={es.problem.stat2_label}
+              data-i18n-en={en.problem.stat2_label}
+            >
+              {es.problem.stat2_label}
+            </p>
+          </div>
+          <div class="glass-card hud-border text-center p-10 stat-card">
+            <div
+              class="text-4xl md:text-5xl font-bold text-gradient-cobalt font-mono"
+            >
+              {es.problem.stat3_num}
+            </div>
+            <p
+              class="text-xs text-ghost mt-4 font-mono tracking-wider i18n"
+              data-i18n-es={es.problem.stat3_label}
+              data-i18n-en={en.problem.stat3_label}
+            >
+              {es.problem.stat3_label}
+            </p>
+          </div>
+        </div>
       </div>
-      <h2
-        class="text-3xl md:text-5xl font-bold text-white mb-6 i18n"
-        data-i18n-es={es.engine.title}
-        data-i18n-en={en.engine.title}
-      >
-        {es.engine.title}
-      </h2>
-      <p
-        class="text-base text-slate max-w-xl leading-[1.8] mb-24 i18n"
-        data-i18n-es={es.engine.sub}
-        data-i18n-en={en.engine.sub}
-      >
-        {es.engine.sub}
-      </p>
+    </section>
 
-      <div class="grid md:grid-cols-2 gap-5">
-        {
-          [
-            {
-              t: es.engine.feat1_title,
-              d: es.engine.feat1_desc,
-              te: en.engine.feat1_title,
-              de: en.engine.feat1_desc,
-              icon: "M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5",
-            },
-            {
-              t: es.engine.feat2_title,
-              d: es.engine.feat2_desc,
-              te: en.engine.feat2_title,
-              de: en.engine.feat2_desc,
-              icon: "M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18",
-            },
-            {
-              t: es.engine.feat3_title,
-              d: es.engine.feat3_desc,
-              te: en.engine.feat3_title,
-              de: en.engine.feat3_desc,
-              icon: "M21 12a9 9 0 11-18 0 9 9 0 0118 0z M9 12l2 2 4-4",
-            },
-            {
-              t: es.engine.feat4_title,
-              d: es.engine.feat4_desc,
-              te: en.engine.feat4_title,
-              de: en.engine.feat4_desc,
-              icon: "M13 10V3L4 14h7v7l9-11h-7z",
-            },
-          ].map((feat) => (
-            <div class="glass-card hud-border feat-card group p-8">
-              <div class="flex items-start gap-5">
+    <!-- ═══════ ENGINE ═══════ -->
+    <section id="engine" class="section-panel gpu-layer">
+      <div class="section-inner">
+        <div class="flex items-center gap-3 mb-8">
+          <p
+            class="font-mono text-xs text-emerald tracking-[0.3em] i18n"
+            data-i18n-es={es.engine.label}
+            data-i18n-en={en.engine.label}
+          >
+            {es.engine.label}
+          </p>
+          <span class="pulse-dot"></span>
+          <span
+            class="font-mono text-[10px] text-emerald i18n"
+            data-i18n-es={es.engine.pulse}
+            data-i18n-en={en.engine.pulse}>{es.engine.pulse}</span
+          >
+        </div>
+        <h2
+          class="text-3xl md:text-5xl font-bold text-white mb-6 i18n"
+          data-i18n-es={es.engine.title}
+          data-i18n-en={en.engine.title}
+        >
+          {es.engine.title}
+        </h2>
+        <p
+          class="text-base text-slate max-w-xl leading-[1.8] mb-24 i18n"
+          data-i18n-es={es.engine.sub}
+          data-i18n-en={en.engine.sub}
+        >
+          {es.engine.sub}
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-5">
+          {
+            [
+              {
+                t: es.engine.feat1_title,
+                d: es.engine.feat1_desc,
+                te: en.engine.feat1_title,
+                de: en.engine.feat1_desc,
+                icon: "M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5",
+              },
+              {
+                t: es.engine.feat2_title,
+                d: es.engine.feat2_desc,
+                te: en.engine.feat2_title,
+                de: en.engine.feat2_desc,
+                icon: "M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18",
+              },
+              {
+                t: es.engine.feat3_title,
+                d: es.engine.feat3_desc,
+                te: en.engine.feat3_title,
+                de: en.engine.feat3_desc,
+                icon: "M21 12a9 9 0 11-18 0 9 9 0 0118 0z M9 12l2 2 4-4",
+              },
+              {
+                t: es.engine.feat4_title,
+                d: es.engine.feat4_desc,
+                te: en.engine.feat4_title,
+                de: en.engine.feat4_desc,
+                icon: "M13 10V3L4 14h7v7l9-11h-7z",
+              },
+            ].map((feat) => (
+              <div class="glass-card hud-border feat-card group p-8">
+                <div class="flex items-start gap-5">
+                  <div
+                    class="flex-shrink-0 w-10 h-10 rounded flex items-center justify-center"
+                    style="background:rgba(0,85,255,0.06);border:1px solid rgba(0,85,255,0.15);"
+                  >
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="#0055FF"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d={feat.icon} />
+                    </svg>
+                  </div>
+                  <div class="py-1">
+                    <h3
+                      class="text-base font-bold text-white mb-3 font-mono i18n"
+                      data-i18n-es={feat.t}
+                      data-i18n-en={feat.te}
+                    >
+                      {feat.t}
+                    </h3>
+                    <p
+                      class="text-sm text-slate leading-[1.7] i18n"
+                      data-i18n-es={feat.d}
+                      data-i18n-en={feat.de}
+                    >
+                      {feat.d}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════ INTEGRATION ═══════ -->
+    <section id="integration" class="section-panel gpu-layer">
+      <div class="section-inner">
+        <p
+          class="font-mono text-xs text-cobalt tracking-[0.3em] mb-8 i18n"
+          data-i18n-es={es.integration.label}
+          data-i18n-en={en.integration.label}
+        >
+          {es.integration.label}
+        </p>
+        <h2
+          class="text-3xl md:text-5xl font-bold text-white mb-6 i18n"
+          data-i18n-es={es.integration.title}
+          data-i18n-en={en.integration.title}
+        >
+          {es.integration.title}
+        </h2>
+        <p
+          class="text-base text-slate max-w-xl leading-[1.8] mb-16 i18n"
+          data-i18n-es={es.integration.sub}
+          data-i18n-en={en.integration.sub}
+        >
+          {es.integration.sub}
+        </p>
+
+        <!-- Flow Pipeline -->
+        <div class="flex flex-wrap items-center justify-center gap-4 mb-20">
+          {
+            es.integration.flow.map((step, i) => (
+              <div class="flex items-center gap-4 flow-step">
                 <div
-                  class="flex-shrink-0 w-10 h-10 rounded flex items-center justify-center"
-                  style="background:rgba(0,85,255,0.06);border:1px solid rgba(0,85,255,0.15);"
+                  class="glass-card px-7 py-4 font-mono text-sm text-white text-center"
+                  style={`border-color:${i === 2 ? "rgba(0,255,136,0.2)" : "rgba(0,85,255,0.12)"};`}
                 >
+                  <span class="text-[10px] text-ghost block mb-1.5">
+                    0{i + 1}
+                  </span>
+                  <span
+                    class="i18n"
+                    data-i18n-es={es.integration.flow[i]}
+                    data-i18n-en={en.integration.flow[i]}
+                  >
+                    {step}
+                  </span>
+                </div>
+                {i < 3 && (
                   <svg
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
                     fill="none"
-                    stroke="#0055FF"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    class="text-cobalt hidden md:block opacity-40"
                     aria-hidden="true"
                   >
-                    <path d={feat.icon} />
+                    <path
+                      d="M4 10h12M12 6l4 4-4 4"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
                   </svg>
-                </div>
-                <div class="py-1">
-                  <h3
-                    class="text-base font-bold text-white mb-3 font-mono i18n"
-                    data-i18n-es={feat.t}
-                    data-i18n-en={feat.te}
-                  >
-                    {feat.t}
-                  </h3>
-                  <p
-                    class="text-sm text-slate leading-[1.7] i18n"
-                    data-i18n-es={feat.d}
-                    data-i18n-en={feat.de}
-                  >
-                    {feat.d}
-                  </p>
-                </div>
+                )}
               </div>
-            </div>
-          ))
-        }
-      </div>
-    </div>
-  </section>
+            ))
+          }
+        </div>
 
-  <!-- ═══════ INTEGRATION ═══════ -->
-  <section id="integration" class="section-panel gpu-layer">
-    <div class="section-inner">
-      <p
-        class="font-mono text-xs text-cobalt tracking-[0.3em] mb-8 i18n"
-        data-i18n-es={es.integration.label}
-        data-i18n-en={en.integration.label}
-      >
-        {es.integration.label}
-      </p>
-      <h2
-        class="text-3xl md:text-5xl font-bold text-white mb-6 i18n"
-        data-i18n-es={es.integration.title}
-        data-i18n-en={en.integration.title}
-      >
-        {es.integration.title}
-      </h2>
-      <p
-        class="text-base text-slate max-w-xl leading-[1.8] mb-16 i18n"
-        data-i18n-es={es.integration.sub}
-        data-i18n-en={en.integration.sub}
-      >
-        {es.integration.sub}
-      </p>
-
-      <!-- Flow Pipeline -->
-      <div class="flex flex-wrap items-center justify-center gap-4 mb-20">
-        {
-          es.integration.flow.map((step, i) => (
-            <div class="flex items-center gap-4 flow-step">
+        <div class="grid md:grid-cols-2 gap-5">
+          <!-- Telegram -->
+          <div class="glass-card hud-border p-10 integ-card">
+            <div class="flex items-center gap-4 mb-5">
               <div
-                class="glass-card px-7 py-4 font-mono text-sm text-white text-center"
-                style={`border-color:${i === 2 ? "rgba(0,255,136,0.2)" : "rgba(0,85,255,0.12)"};`}
+                class="w-10 h-10 rounded flex items-center justify-center"
+                style="background:rgba(0,85,255,0.06);border:1px solid rgba(0,85,255,0.15);"
               >
-                <span class="text-[10px] text-ghost block mb-1.5">0{i + 1}</span>
-                <span
-                  class="i18n"
-                  data-i18n-es={es.integration.flow[i]}
-                  data-i18n-en={en.integration.flow[i]}
-                >
-                  {step}
-                </span>
-              </div>
-              {i < 3 && (
                 <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  class="text-cobalt hidden md:block opacity-40"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="#0055FF"
                   aria-hidden="true"
+                  ><path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"
+                  ></path></svg
                 >
-                  <path
-                    d="M4 10h12M12 6l4 4-4 4"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              )}
-            </div>
-          ))
-        }
-      </div>
-
-      <div class="grid md:grid-cols-2 gap-5">
-        <!-- Telegram -->
-        <div class="glass-card hud-border p-10 integ-card">
-          <div class="flex items-center gap-4 mb-5">
-            <div
-              class="w-10 h-10 rounded flex items-center justify-center"
-              style="background:rgba(0,85,255,0.06);border:1px solid rgba(0,85,255,0.15);"
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="#0055FF" aria-hidden="true"
-                ><path
-                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"
-                ></path></svg
+              </div>
+              <h3
+                class="text-base font-bold text-white font-mono i18n"
+                data-i18n-es={es.integration.telegram_title}
+                data-i18n-en={en.integration.telegram_title}
               >
+                {es.integration.telegram_title}
+              </h3>
             </div>
-            <h3
-              class="text-base font-bold text-white font-mono i18n"
-              data-i18n-es={es.integration.telegram_title}
-              data-i18n-en={en.integration.telegram_title}
+            <p
+              class="text-sm text-slate leading-[1.7] i18n"
+              data-i18n-es={es.integration.telegram_desc}
+              data-i18n-en={en.integration.telegram_desc}
             >
-              {es.integration.telegram_title}
-            </h3>
-          </div>
-          <p
-            class="text-sm text-slate leading-[1.7] i18n"
-            data-i18n-es={es.integration.telegram_desc}
-            data-i18n-en={en.integration.telegram_desc}
-          >
-            {es.integration.telegram_desc}
-          </p>
-          <!-- Mock notification -->
-          <div
-            class="mt-8 rounded-lg p-5"
-            style="background:rgba(0,0,0,0.25);border:1px solid rgba(0,85,255,0.06);"
-          >
-            <div class="font-mono text-[10px] text-cobalt mb-2 tracking-wider">⚡ VigIA Alert</div>
-            <div class="font-mono text-xs text-white-soft">
-              🔴 Persona detectada — Zona A
+              {es.integration.telegram_desc}
+            </p>
+            <!-- Mock notification -->
+            <div
+              class="mt-8 rounded-lg p-5"
+              style="background:rgba(0,0,0,0.25);border:1px solid rgba(0,85,255,0.06);"
+            >
+              <div
+                class="font-mono text-[10px] text-cobalt mb-2 tracking-wider"
+              >
+                ⚡ VigIA Alert
+              </div>
+              <div class="font-mono text-xs text-white-soft">
+                🔴 Persona detectada — Zona A
+              </div>
+              <div class="font-mono text-[10px] text-ghost mt-1.5">
+                Confianza: 94.2% | 20:45:03
+              </div>
             </div>
-            <div class="font-mono text-[10px] text-ghost mt-1.5">
-              Confianza: 94.2% | 20:45:03
+          </div>
+          <!-- SQLite -->
+          <div class="glass-card hud-border p-10 integ-card">
+            <div class="flex items-center gap-4 mb-5">
+              <div
+                class="w-10 h-10 rounded flex items-center justify-center"
+                style="background:rgba(0,255,136,0.06);border:1px solid rgba(0,255,136,0.15);"
+              >
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#00FF88"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  ><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path
+                    d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path
+                    d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg
+                >
+              </div>
+              <h3
+                class="text-base font-bold text-white font-mono i18n"
+                data-i18n-es={es.integration.sqlite_title}
+                data-i18n-en={en.integration.sqlite_title}
+              >
+                {es.integration.sqlite_title}
+              </h3>
+            </div>
+            <p
+              class="text-sm text-slate leading-[1.7] i18n"
+              data-i18n-es={es.integration.sqlite_desc}
+              data-i18n-en={en.integration.sqlite_desc}
+            >
+              {es.integration.sqlite_desc}
+            </p>
+            <!-- Mock DB row -->
+            <div
+              class="mt-8 rounded-lg p-5 overflow-x-auto"
+              style="background:rgba(0,0,0,0.25);border:1px solid rgba(0,255,136,0.06);"
+            >
+              <table class="w-full font-mono text-[11px]">
+                <caption class="sr-only"
+                  >Registro de eventos de VigIA — última detección</caption
+                >
+                <thead
+                  ><tr class="text-emerald"
+                    ><th class="text-left pr-4 pb-2">id</th><th
+                      class="text-left pr-4 pb-2">class</th
+                    ><th class="text-left pr-4 pb-2">conf</th><th
+                      class="text-left pb-2">time</th
+                    ></tr
+                  ></thead
+                >
+                <tbody class="text-white-soft">
+                  <tr
+                    ><td class="pr-4 py-1 text-ghost">1024</td><td
+                      class="pr-4 py-1">person</td
+                    ><td class="pr-4 py-1">0.942</td><td class="py-1 text-ghost"
+                      >20:45:03</td
+                    ></tr
+                  >
+                  <tr
+                    ><td class="pr-4 py-1 text-ghost">1023</td><td
+                      class="pr-4 py-1">vehicle</td
+                    ><td class="pr-4 py-1">0.887</td><td class="py-1 text-ghost"
+                      >20:44:51</td
+                    ></tr
+                  >
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
-        <!-- SQLite -->
-        <div class="glass-card hud-border p-10 integ-card">
-          <div class="flex items-center gap-4 mb-5">
-            <div
-              class="w-10 h-10 rounded flex items-center justify-center"
-              style="background:rgba(0,255,136,0.06);border:1px solid rgba(0,255,136,0.15);"
-            >
-              <svg
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#00FF88"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
-                ><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path
-                  d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path
-                  d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg
-              >
-            </div>
-            <h3
-              class="text-base font-bold text-white font-mono i18n"
-              data-i18n-es={es.integration.sqlite_title}
-              data-i18n-en={en.integration.sqlite_title}
-            >
-              {es.integration.sqlite_title}
-            </h3>
-          </div>
-          <p
-            class="text-sm text-slate leading-[1.7] i18n"
-            data-i18n-es={es.integration.sqlite_desc}
-            data-i18n-en={en.integration.sqlite_desc}
-          >
-            {es.integration.sqlite_desc}
-          </p>
-          <!-- Mock DB row -->
-          <div
-            class="mt-8 rounded-lg p-5 overflow-x-auto"
-            style="background:rgba(0,0,0,0.25);border:1px solid rgba(0,255,136,0.06);"
-          >
-            <table class="w-full font-mono text-[11px]">
-              <caption class="sr-only">Registro de eventos de VigIA — última detección</caption>
-              <thead
-                ><tr class="text-emerald"
-                  ><th class="text-left pr-4 pb-2">id</th><th
-                    class="text-left pr-4 pb-2">class</th
-                  ><th class="text-left pr-4 pb-2">conf</th><th
-                    class="text-left pb-2">time</th
-                  ></tr
-                ></thead
-              >
-              <tbody class="text-white-soft">
-                <tr
-                  ><td class="pr-4 py-1 text-ghost">1024</td><td
-                    class="pr-4 py-1">person</td
-                  ><td class="pr-4 py-1">0.942</td><td class="py-1 text-ghost"
-                    >20:45:03</td
-                  ></tr
-                >
-                <tr
-                  ><td class="pr-4 py-1 text-ghost">1023</td><td
-                    class="pr-4 py-1">vehicle</td
-                  ><td class="pr-4 py-1">0.887</td><td class="py-1 text-ghost"
-                    >20:44:51</td
-                  ></tr
-                >
-              </tbody>
-            </table>
-          </div>
-        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ═══════ SPECS ═══════ -->
-  <section id="specs" class="section-panel gpu-layer">
-    <div class="section-inner">
-      <p
-        class="font-mono text-xs text-cobalt tracking-[0.3em] mb-8 i18n"
-        data-i18n-es={es.specs.label}
-        data-i18n-en={en.specs.label}
-      >
-        {es.specs.label}
-      </p>
-      <h2
-        class="text-3xl md:text-5xl font-bold text-white mb-16 i18n"
-        data-i18n-es={es.specs.title}
-        data-i18n-en={en.specs.title}
-      >
-        {es.specs.title}
-      </h2>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        {
-          es.specs.items.map((item, i) => (
-            <div class="glass-card hud-border p-7 spec-card">
-              <div
-                class="font-mono text-[10px] text-ghost mb-3 tracking-wider i18n"
-                data-i18n-es={es.specs.items[i].key}
-                data-i18n-en={en.specs.items[i].key}
-              >
-                {item.key}
-              </div>
-              <div
-                class="font-mono text-sm text-white font-semibold i18n"
-                data-i18n-es={es.specs.items[i].value}
-                data-i18n-en={en.specs.items[i].value}
-              >
-                {item.value}
-              </div>
-            </div>
-          ))
-        }
+    <!-- ═══════ CONTACT ═══════ -->
+    <section id="contact" class="section-panel gpu-layer">
+      <div class="section-inner text-center flex flex-col items-center">
+        <p
+          class="font-mono text-xs text-cobalt tracking-[0.3em] mb-8 i18n"
+          data-i18n-es={es.contact.label}
+          data-i18n-en={en.contact.label}
+        >
+          {es.contact.label}
+        </p>
+        <h2
+          class="text-3xl md:text-5xl font-bold text-white mb-8 i18n"
+          data-i18n-es={es.contact.title}
+          data-i18n-en={en.contact.title}
+        >
+          {es.contact.title}
+        </h2>
+        <p
+          class="text-base text-slate max-w-md leading-[1.8] mb-12 i18n"
+          data-i18n-es={es.contact.sub}
+          data-i18n-en={en.contact.sub}
+        >
+          {es.contact.sub}
+        </p>
+        <a
+          href={`mailto:${es.contact.email}`}
+          id="contact-cta"
+          class="inline-flex items-center gap-3 px-10 py-5 font-mono text-sm font-semibold tracking-wider uppercase rounded text-white no-underline"
+          style="background:var(--color-cobalt);box-shadow:0 0 40px rgba(0,85,255,0.25);"
+        >
+          <span
+            class="i18n"
+            data-i18n-es={es.contact.cta}
+            data-i18n-en={en.contact.cta}>{es.contact.cta}</span
+          >
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+            aria-hidden="true"
+            ><path
+              d="M3 8h10M9 4l4 4-4 4"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path></svg
+          >
+        </a>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ═══════ CONTACT ═══════ -->
-  <section id="contact" class="section-panel gpu-layer">
-    <div class="section-inner text-center flex flex-col items-center">
-      <p
-        class="font-mono text-xs text-cobalt tracking-[0.3em] mb-8 i18n"
-        data-i18n-es={es.contact.label}
-        data-i18n-en={en.contact.label}
-      >
-        {es.contact.label}
-      </p>
-      <h2
-        class="text-3xl md:text-5xl font-bold text-white mb-8 i18n"
-        data-i18n-es={es.contact.title}
-        data-i18n-en={en.contact.title}
-      >
-        {es.contact.title}
-      </h2>
-      <p
-        class="text-base text-slate max-w-md leading-[1.8] mb-12 i18n"
-        data-i18n-es={es.contact.sub}
-        data-i18n-en={en.contact.sub}
-      >
-        {es.contact.sub}
-      </p>
-      <a
-        href={`mailto:${es.contact.email}`}
-        id="contact-cta"
-        class="inline-flex items-center gap-3 px-10 py-5 font-mono text-sm font-semibold tracking-wider uppercase rounded text-white no-underline"
-        style="background:var(--color-cobalt);box-shadow:0 0 40px rgba(0,85,255,0.25);"
-      >
-        <span
-          class="i18n"
-          data-i18n-es={es.contact.cta}
-          data-i18n-en={en.contact.cta}>{es.contact.cta}</span
-        >
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"
-          ><path
-            d="M3 8h10M9 4l4 4-4 4"
-            stroke="currentColor"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"></path></svg
-        >
-      </a>
-    </div>
-  </section>
-
-  <!-- ═══════ FOOTER ═══════ -->
+    <!-- ═══════ FOOTER ═══════ -->
   </main>
-  <footer class="py-10 px-8 border-t" style="border-color:rgba(0,85,255,0.06);" role="contentinfo">
+  <footer
+    class="py-10 px-8 border-t"
+    style="border-color:rgba(0,85,255,0.06);"
+    role="contentinfo"
+  >
     <div
       class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 font-mono text-[10px] text-ghost tracking-wider"
     >
