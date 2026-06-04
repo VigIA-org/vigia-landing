@@ -185,6 +185,9 @@ const en = translations.en;
     >
       <source src="/hero_animation.webm" type="video/webm" />
     </video>
+    <script>
+      document.getElementById('hero-video').playbackRate = 1.75;
+    </script>
     <!-- Dark overlay for text readability -->
     <div
       class="absolute inset-0"
@@ -250,7 +253,7 @@ const en = translations.en;
         <!-- Subtitle -->
         <p
           id="hero-sub"
-          class="text-base md:text-lg text-slate max-w-xl leading-relaxed i18n"
+          class="text-base md:text-xl text-white-soft max-w-xl leading-relaxed i18n drop-shadow-sm"
           data-i18n-es={es.hero.sub}
           data-i18n-en={en.hero.sub}
         >
