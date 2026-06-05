@@ -76,8 +76,9 @@ export const translations = {
       label: '// CONTACTO',
       title: '¿Listo para activar VigIA?',
       sub: 'Contáctanos para implementar el sistema en tu infraestructura.',
-      cta: 'Solicitar Demo',
+      cta: 'Contactar por WhatsApp',
       email: 'info@vigia.dev',
+      phone: '573333333333',
     },
     footer: {
       rights: 'Todos los derechos reservados.',
@@ -159,8 +160,9 @@ export const translations = {
       label: '// CONTACT',
       title: 'Ready to activate VigIA?',
       sub: 'Contact us to deploy the system on your infrastructure.',
-      cta: 'Request Demo',
+      cta: 'Contact via WhatsApp',
       email: 'info@vigia.dev',
+      phone: '573333333333',
     },
     footer: {
       rights: 'All rights reserved.',
