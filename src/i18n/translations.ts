@@ -56,6 +56,10 @@ export const translations = {
       telegram_desc: 'Alertas instantáneas con captura de frame, clase detectada, nivel de confianza y timestamp. Configura quién recibe cada tipo de alerta.',
       sqlite_title: 'Base de Datos SQLite',
       sqlite_desc: 'Registro persistente de cada evento: frame capturado, coordenadas del bounding box, clase, confianza y metadatos temporales.',
+      siren_title: 'Sistema de Alarma',
+      siren_desc: 'Activación automática de sirenas y faroles LED al detectar una amenaza. Disuasión física inmediata sin intervención manual.',
+      dashboard_title: 'Dashboard Web & Mobile',
+      dashboard_desc: 'Panel de monitoreo en tiempo real accesible desde cualquier dispositivo Android / iOS. Visualiza alertas, historial y estadísticas del sistema.',
       flow: ['Detección', 'Clasificación', 'Alerta', 'Registro'],
     },
     specs: {
@@ -140,6 +144,10 @@ export const translations = {
       telegram_desc: 'Instant alerts with frame capture, detected class, confidence level, and timestamp. Configure who receives each alert type.',
       sqlite_title: 'SQLite Database',
       sqlite_desc: 'Persistent record of every event: captured frame, bounding box coordinates, class, confidence, and temporal metadata.',
+      siren_title: 'Alarm System',
+      siren_desc: 'Automatic activation of sirens and LED floodlights upon threat detection. Immediate physical deterrence without manual intervention.',
+      dashboard_title: 'Web Dashboard',
+      dashboard_desc: 'Real-time monitoring panel accessible from any device. View alerts, history, and system statistics.',
       flow: ['Detection', 'Classification', 'Alert', 'Record'],
     },
     specs: {

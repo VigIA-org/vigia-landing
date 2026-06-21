@@ -176,6 +176,15 @@
     }
   }
 
+  @keyframes pulse-siren {
+    0%, 100% {
+      box-shadow: 0 0 0 0 rgba(255, 85, 85, 0.6);
+    }
+    50% {
+      box-shadow: 0 0 0 8px rgba(255, 85, 85, 0);
+    }
+  }
+
   .pulse-dot {
     width: 8px;
     height: 8px;
