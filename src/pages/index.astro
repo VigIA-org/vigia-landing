@@ -842,56 +842,201 @@ const en = translations.en;
         >
           {es.contact.sub}
         </p>
-        <a
-          href={`https://wa.me/${es.contact.phone}`}
-          id="contact-cta"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center gap-3 px-10 py-5 font-mono text-sm font-semibold tracking-wider uppercase rounded text-white no-underline"
-          style="background:var(--color-cobalt);box-shadow:0 0 40px rgba(0,85,255,0.25);"
+        <form
+          id="contact-form"
+          class="w-full max-w-lg flex flex-col gap-5 text-left"
         >
-          <span
-            class="i18n"
-            data-i18n-es={es.contact.cta}
-            data-i18n-en={en.contact.cta}>{es.contact.cta}</span
+          <input
+            type="text"
+            name="name"
+            required
+            placeholder={es.contact.name_placeholder}
+            data-i18n-placeholder-es={es.contact.name_placeholder}
+            data-i18n-placeholder-en={en.contact.name_placeholder}
+            class="contact-input"
+          />
+          <div class="flex gap-3">
+            <div class="country-picker relative w-auto min-w-[220px] shrink-0" id="country-picker">
+              <button type="button" class="contact-input contact-select flex items-center gap-2 w-full text-left country-trigger" id="country-trigger">
+                <span class="country-display font-mono text-sm">🇨🇴 +57</span>
+              </button>
+              <input type="hidden" name="country_code" value="+57" id="country-hidden" />
+              <div class="country-dropdown hidden" id="country-dropdown">
+                <div class="country-search-wrap">
+                  <input type="text" class="country-search" id="country-search" placeholder="Buscar país..." autocomplete="off" />
+                </div>
+                <ul class="country-list" id="country-list">
+                  <li class="country-option selected" data-code="+57" data-flag="🇨🇴" data-name="Colombia">🇨🇴 +57 — Colombia</li>
+                  <li class="country-option" data-code="+52" data-flag="🇲🇽" data-name="México">🇲🇽 +52 — México</li>
+                  <li class="country-option" data-code="+54" data-flag="🇦🇷" data-name="Argentina">🇦🇷 +54 — Argentina</li>
+                  <li class="country-option" data-code="+56" data-flag="🇨🇱" data-name="Chile">🇨🇱 +56 — Chile</li>
+                  <li class="country-option" data-code="+51" data-flag="🇵🇪" data-name="Perú">🇵🇪 +51 — Perú</li>
+                  <li class="country-option" data-code="+593" data-flag="🇪🇨" data-name="Ecuador">🇪🇨 +593 — Ecuador</li>
+                  <li class="country-option" data-code="+58" data-flag="🇻🇪" data-name="Venezuela">🇻🇪 +58 — Venezuela</li>
+                  <li class="country-option" data-code="+1" data-flag="🇺🇸" data-name="Estados Unidos">🇺🇸 +1 — Estados Unidos</li>
+                  <li class="country-option" data-code="+34" data-flag="🇪🇸" data-name="España">🇪🇸 +34 — España</li>
+                  <li class="country-option" data-code="+55" data-flag="🇧🇷" data-name="Brasil">🇧🇷 +55 — Brasil</li>
+                  <li class="country-option" data-code="+506" data-flag="🇨🇷" data-name="Costa Rica">🇨🇷 +506 — Costa Rica</li>
+                  <li class="country-option" data-code="+507" data-flag="🇵🇦" data-name="Panamá">🇵🇦 +507 — Panamá</li>
+                  <li class="country-option" data-code="+502" data-flag="🇬🇹" data-name="Guatemala">🇬🇹 +502 — Guatemala</li>
+                  <li class="country-option" data-code="+504" data-flag="🇭🇳" data-name="Honduras">🇭🇳 +504 — Honduras</li>
+                  <li class="country-option" data-code="+503" data-flag="🇸🇻" data-name="El Salvador">🇸🇻 +503 — El Salvador</li>
+                  <li class="country-option" data-code="+505" data-flag="🇳🇮" data-name="Nicaragua">🇳🇮 +505 — Nicaragua</li>
+                  <li class="country-option" data-code="+1809" data-flag="🇩🇴" data-name="República Dominicana">🇩🇴 +1809 — República Dominicana</li>
+                  <li class="country-option" data-code="+53" data-flag="🇨🇺" data-name="Cuba">🇨🇺 +53 — Cuba</li>
+                  <li class="country-option" data-code="+44" data-flag="🇬🇧" data-name="Reino Unido">🇬🇧 +44 — Reino Unido</li>
+                  <li class="country-option" data-code="+49" data-flag="🇩🇪" data-name="Alemania">🇩🇪 +49 — Alemania</li>
+                  <li class="country-option" data-code="+33" data-flag="🇫🇷" data-name="Francia">🇫🇷 +33 — Francia</li>
+                  <li class="country-option" data-code="+39" data-flag="🇮🇹" data-name="Italia">🇮🇹 +39 — Italia</li>
+                </ul>
+              </div>
+            </div>
+            <input
+              type="tel"
+              name="phone"
+              required
+              placeholder={es.contact.phone_placeholder}
+              data-i18n-placeholder-es={es.contact.phone_placeholder}
+              data-i18n-placeholder-en={en.contact.phone_placeholder}
+              class="contact-input w-full"
+            />
+          </div>
+          <input
+            type="email"
+            name="email"
+            required
+            placeholder={es.contact.email_placeholder}
+            data-i18n-placeholder-es={es.contact.email_placeholder}
+            data-i18n-placeholder-en={en.contact.email_placeholder}
+            class="contact-input"
+          />
+          <textarea
+            name="message"
+            rows="4"
+            required
+            placeholder={es.contact.message_placeholder}
+            data-i18n-placeholder-es={es.contact.message_placeholder}
+            data-i18n-placeholder-en={en.contact.message_placeholder}
+            class="contact-input resize-none"
+          ></textarea>
+          <button
+            type="submit"
+            class="w-full py-4 mt-2 font-mono text-sm font-semibold tracking-wider uppercase rounded text-white cursor-pointer transition-all duration-300"
+            style="background:var(--color-cobalt);box-shadow:0 0 40px rgba(0,85,255,0.25);"
           >
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            aria-hidden="true"
-            ><path
-              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
-            ></path></svg
-          >
-        </a>
+            <span
+              class="i18n"
+              data-i18n-es={es.contact.submit}
+              data-i18n-en={en.contact.submit}
+            >
+              {es.contact.submit}
+            </span>
+          </button>
+        </form>
       </div>
     </section>
 
     <!-- ═══════ FOOTER ═══════ -->
   </main>
   <footer
-    class="py-10 px-8 border-t"
-    style="border-color:rgba(0,85,255,0.06);"
+    class="footer-main"
     role="contentinfo"
   >
-    <div
-      class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 font-mono text-[10px] text-ghost tracking-wider"
-    >
-      <div>
-        © 2025 VigIA. <span
-          class="i18n"
-          data-i18n-es={es.footer.rights}
-          data-i18n-en={en.footer.rights}>{es.footer.rights}</span
-        >
+    <div class="footer-inner">
+      <!-- Top: Brand + Columns -->
+      <div class="footer-grid">
+        <!-- Producto -->
+        <div class="footer-col">
+          <h4
+            class="footer-col-title i18n"
+            data-i18n-es={es.footer.col_producto}
+            data-i18n-en={en.footer.col_producto}
+          >
+            {es.footer.col_producto}
+          </h4>
+          <ul class="footer-links">
+            <li>
+              <a href="#integration" class="footer-link i18n" data-i18n-es={es.footer.link_alertas} data-i18n-en={en.footer.link_alertas}>
+                {es.footer.link_alertas}
+              </a>
+            </li>
+            <li>
+              <a href="#integration" class="footer-link i18n" data-i18n-es={es.footer.link_dashboard} data-i18n-en={en.footer.link_dashboard}>
+                {es.footer.link_dashboard}
+              </a>
+            </li>
+            <li>
+              <a href="#specs" class="footer-link i18n" data-i18n-es={es.footer.link_specs} data-i18n-en={en.footer.link_specs}>
+                {es.footer.link_specs}
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Empresa -->
+        <div class="footer-col">
+          <h4
+            class="footer-col-title i18n"
+            data-i18n-es={es.footer.col_empresa}
+            data-i18n-en={en.footer.col_empresa}
+          >
+            {es.footer.col_empresa}
+          </h4>
+          <ul class="footer-links">
+            <li>
+              <a href="#contact" class="footer-link i18n" data-i18n-es={es.footer.link_contacto} data-i18n-en={en.footer.link_contacto}>
+                {es.footer.link_contacto}
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Legal -->
+        <div class="footer-col">
+          <h4
+            class="footer-col-title i18n"
+            data-i18n-es={es.footer.col_legal}
+            data-i18n-en={en.footer.col_legal}
+          >
+            {es.footer.col_legal}
+          </h4>
+          <ul class="footer-links">
+            <li>
+              <a href="/privacidad" class="footer-link i18n" data-i18n-es={es.footer.link_privacidad} data-i18n-en={en.footer.link_privacidad}>
+                {es.footer.link_privacidad}
+              </a>
+            </li>
+            <li>
+              <a href="/terminos" class="footer-link i18n" data-i18n-es={es.footer.link_terminos} data-i18n-en={en.footer.link_terminos}>
+                {es.footer.link_terminos}
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
-      <div>
-        <span
-          class="i18n"
-          data-i18n-es={es.footer.built}
-          data-i18n-en={en.footer.built}>{es.footer.built}</span
-        > Astro + GSAP + Tailwind
+
+      <!-- Divider -->
+      <div class="footer-divider"></div>
+
+      <!-- Bottom -->
+      <div class="footer-bottom">
+        <div class="footer-bottom-left">
+          <span>© {new Date().getFullYear()} VigIA.</span>
+          <span
+            class="i18n"
+            data-i18n-es={es.footer.rights}
+            data-i18n-en={en.footer.rights}
+          >
+            {es.footer.rights}
+          </span>
+        </div>
+        <div
+          class="footer-bottom-right i18n"
+          data-i18n-es={es.footer.made_with}
+          data-i18n-en={en.footer.made_with}
+        >
+          {es.footer.made_with}
+        </div>
       </div>
     </div>
   </footer>

@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initCursor();
   initLanguageToggle();
   initMobileMenu();
+  initCountryPicker();
   initSmoothScroll();
   initScrollProgress();
   initCinematicAnimations();
@@ -426,7 +427,7 @@ function cardTilt(isDesktop: boolean) {
 // MAGNETIC BUTTONS — CTA cursor attraction
 // ═══════════════════════════════════════════════
 function magneticButtons() {
-  document.querySelectorAll<HTMLElement>("#hero-cta, #contact-cta").forEach((btn) => {
+  document.querySelectorAll<HTMLElement>("#hero-cta").forEach((btn) => {
     btn.addEventListener("mousemove", (e) => {
       const rect = btn.getBoundingClientRect();
       const x = e.clientX - rect.left - rect.width / 2;
@@ -466,12 +467,11 @@ function contactReveal() {
     },
   });
 
-  tl.from("#contact-cta", {
+  tl.from("#contact-form", {
     autoAlpha: 0,
     y: 40,
-    scale: 0.85,
     duration: 0.7,
-    ease: "back.out(1.7)",
+    ease: "power3.out",
   });
 }
 
@@ -605,6 +605,11 @@ function initLanguageToggle() {
         const text = el.getAttribute(`data-i18n-${lang}`);
         if (text) el.textContent = text;
       });
+
+      document.querySelectorAll("[data-i18n-placeholder-es]").forEach((el) => {
+        const placeholder = el.getAttribute(`data-i18n-placeholder-${lang}`);
+        if (placeholder) el.setAttribute("placeholder", placeholder);
+      });
     };
 
     if (document.startViewTransition) {
@@ -662,5 +667,79 @@ function initMobileMenu() {
       menu.classList.add("hidden");
       menu.classList.remove("flex");
     });
+  });
+}
+
+// ═══════════════════════════════════════════════
+// COUNTRY PICKER — Searchable dropdown
+// ═══════════════════════════════════════════════
+function initCountryPicker() {
+  const picker = document.getElementById("country-picker");
+  if (!picker) return;
+
+  const trigger = document.getElementById("country-trigger") as HTMLButtonElement;
+  const dropdown = document.getElementById("country-dropdown") as HTMLDivElement;
+  const search = document.getElementById("country-search") as HTMLInputElement;
+  const list = document.getElementById("country-list") as HTMLUListElement;
+  const hidden = document.getElementById("country-hidden") as HTMLInputElement;
+  const display = trigger.querySelector(".country-display") as HTMLSpanElement;
+  const options = Array.from(list.querySelectorAll<HTMLElement>(".country-option"));
+
+  let open = false;
+
+  function toggle(force?: boolean) {
+    open = force ?? !open;
+    dropdown.classList.toggle("hidden", !open);
+    if (open) {
+      search.value = "";
+      filterOptions("");
+      search.focus();
+    }
+  }
+
+  function selectOption(opt: HTMLElement) {
+    const code = opt.dataset.code ?? "";
+    const flag = opt.dataset.flag ?? "";
+    const name = opt.dataset.name ?? "";
+    hidden.value = code;
+    display.textContent = `${flag} ${code}`;
+    options.forEach((o) => o.classList.remove("selected"));
+    opt.classList.add("selected");
+    toggle(false);
+  }
+
+  function filterOptions(query: string) {
+    const q = query.toLowerCase();
+    options.forEach((opt) => {
+      const name = opt.dataset.name?.toLowerCase() ?? "";
+      const code = opt.dataset.code?.toLowerCase() ?? "";
+      const match = name.includes(q) || code.includes(q);
+      opt.style.display = match ? "" : "none";
+    });
+  }
+
+  trigger.addEventListener("click", (e) => {
+    e.stopPropagation();
+    toggle();
+  });
+
+  search.addEventListener("input", () => {
+    filterOptions(search.value);
+  });
+
+  search.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      toggle(false);
+    }
+  });
+
+  options.forEach((opt) => {
+    opt.addEventListener("click", () => selectOption(opt));
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!picker.contains(e.target as Node)) {
+      toggle(false);
+    }
   });
 }
